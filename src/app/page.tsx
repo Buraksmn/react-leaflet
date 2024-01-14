@@ -1,3 +1,5 @@
+"use client";
+
 import "@radix-ui/themes/styles.css";
 import {
   Avatar,
@@ -8,40 +10,61 @@ import {
   Flex,
   Heading,
   Link,
+  Tabs,
   Text,
 } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import MapContainer from "@app/components/MapContainer";
 export default function Home() {
   return (
     <main>
       <Container mt={"9"}>
-        <Card
-          style={{
-            minWidth: "100%",
-          }}
-        >
-          <Flex gap="3" justify={"center"} align="center">
-            <Heading weight={"medium"} align={"center"}>
-              MY TEMPLATE
-            </Heading>
-          </Flex>
-        </Card>
+        <Heading mb={"2"} align={"center"}>
+          React Leaflet Examples
+        </Heading>
+        <Card>
+          <Tabs.Root defaultValue="empty-view">
+            <Tabs.List>
+              <Tabs.Trigger value="empty-view">Map View</Tabs.Trigger>
 
-        <Card mt={"5"}>
-          <Flex justify={"center"} gap={"3"}>
-            <Button variant={"soft"}>GİTHUB</Button>
-          </Flex>
-        </Card>
+              <Tabs.Trigger value="markers" disabled={true}>
+                Custom Markers
+              </Tabs.Trigger>
+              <Tabs.Trigger disabled={true} value="polygons">
+                Polygons
+              </Tabs.Trigger>
+              <Tabs.Trigger disabled={true} value="edit-polygon">
+                Edit Polygon
+              </Tabs.Trigger>
 
-        <Card variant={"ghost"} mt={"5"}>
-          <Flex direction={"column"} align={"center"} gap={"3"}>
-            <Link target={"_blank"} href={"https://www.radix-ui.com/"}>
-              <Text>https://www.radix-ui.com/</Text>
-            </Link>
-            <Link target={"_blank"} href={"https://nextjs.org/"}>
-              <Text>https://nextjs.org//</Text>
-            </Link>
-          </Flex>
+              <Tabs.Trigger disabled={true} value="edit-polygon">
+                Cluster Group
+              </Tabs.Trigger>
+              <Tabs.Trigger disabled={true} value="edit-polygon">
+                Heat map
+              </Tabs.Trigger>
+            </Tabs.List>
+
+            <Box px="4" pt="3" pb="2">
+              <Tabs.Content value="empty-view">
+                <MapContainer />
+              </Tabs.Content>
+
+              <Tabs.Content value="markers">
+                <MapContainer />
+              </Tabs.Content>
+
+              <Tabs.Content value="polygons">
+                <MapContainer />
+              </Tabs.Content>
+
+              <Tabs.Content value="edit-polygon">
+                <Text size="2">
+                  <MapContainer />
+                </Text>
+              </Tabs.Content>
+            </Box>
+          </Tabs.Root>
         </Card>
       </Container>
     </main>
