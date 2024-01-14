@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+}
+body {
+}
+
+body::before {
+  --line: hsl(0 0% 20% / 0.2);
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background:
+          linear-gradient(90deg, var(--line) 2px, transparent 1px 5vmin) 0 -5vmin / 8vmin 10vmin,
+          linear-gradient(var(--line) 2px, transparent 1px 5vmin) 0 -8vmin / 8vmin 8vmin;
+  mask: linear-gradient(-15deg, transparent 60%, white);
+  top: 0;
+  z-index: -1;
+  transform: translate3d(0, 0, -100vmin);
+}
